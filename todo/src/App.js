@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import TodoItem from './TodoItem';
 
 
 
@@ -30,6 +31,7 @@ class App extends React.Component {
             <input value={this.state.input} onChange={this.updateInput}></input>
             <button>Submit</button>
           </form>
+          <TodoItem todo={this.state.text}/>
         </header>
       </div>
     );
