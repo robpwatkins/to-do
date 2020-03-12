@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+// import TodoItem from './TodoItem';
 
 
 
@@ -19,7 +20,10 @@ class App extends React.Component {
       text: [ ...this.state.text, this.state.input],
       input: ''
     })
-    console.log(this.state.text)
+  }
+
+  deleteElement = index => {
+    this.setState({ text: this.state.text.filter((x, y) => y !== index) })
   }
 
   render() {
@@ -30,6 +34,15 @@ class App extends React.Component {
             <input value={this.state.input} onChange={this.updateInput}></input>
             <button>Submit</button>
           </form>
+          {this.state.text.map((item, index) => {
+          return (
+            <div key={index}>
+              {this.state.text[index]}
+              <button onClick={() => this.deleteElement(index)}>delete</button>
+            </div>
+          )
+        })}
+          {/* <TodoItem todo={this.state.text}/> */}
         </header>
       </div>
     );
