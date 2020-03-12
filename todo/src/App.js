@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
-// import TodoItem from './TodoItem';
 
 
 
 class App extends React.Component {
   state = {
     input: '',
-    text: []
+    todos: []
   }
 
   updateInput = event => {
@@ -17,13 +16,13 @@ class App extends React.Component {
   formSubmit = event => {
     event.preventDefault()
     this.setState({
-      text: [ ...this.state.text, this.state.input],
+      todos: [ ...this.state.todos, this.state.input],
       input: ''
     })
   }
 
   deleteElement = index => {
-    this.setState({ text: this.state.text.filter((x, y) => y !== index) })
+    this.setState({ todos: this.state.todos.filter((x, y) => y !== index) })
   }
 
   render() {
@@ -34,15 +33,14 @@ class App extends React.Component {
             <input value={this.state.input} onChange={this.updateInput}></input>
             <button>Submit</button>
           </form>
-          {this.state.text.map((item, index) => {
+          {this.state.todos.map((item, index) => {
           return (
             <div key={index}>
-              {this.state.text[index]}
+              {this.state.todos[index]}
               <button onClick={() => this.deleteElement(index)}>delete</button>
             </div>
           )
         })}
-          {/* <TodoItem todo={this.state.text}/> */}
         </header>
       </div>
     );
